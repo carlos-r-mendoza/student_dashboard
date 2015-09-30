@@ -1,12 +1,11 @@
 'use strict';
 
 angular.module('studentDashboard')
-	.directive('navbar', function() {
+	.directive('preloader', function() {
 		return {
 			restrict: 'A',
-			templateUrl: 'templates/navbar.html',
+			template: '<div class="progress preloader"><div class="indeterminate"></div></div>',
 			link: function(scope, element, attrs) {
-				$('.button-collapse').sideNav();
 			}
-		}
+		};
 	});

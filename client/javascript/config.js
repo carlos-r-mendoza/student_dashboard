@@ -18,15 +18,18 @@ angular.module('studentDashboard')
 	$stateProvider
 		.state('main', {
 			url: '/',
-			templateUrl: 'templates/student-dashboard.html'
+			templateUrl: 'templates/students.html',
+			controller: 'StudentsCtrl'
 		})
-		.state('student-dashboard', {
-			url: '/student-dashboard',
-			templateUrl: 'templates/student-dashboard.html'
+		.state('students', {
+			url: '/students',
+			templateUrl: 'templates/students.html',
+			controller: 'StudentsCtrl'
 		})
-		.state('school-profile', {
-			url: '/school-profile',
-			templateUrl: 'templates/student-dashboard.html'
+		.state('school', {
+			url: '/school',
+			templateUrl: 'templates/school.html',
+			controller: 'StudentsCtrl'
 		})
 });
 

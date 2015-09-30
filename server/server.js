@@ -9,9 +9,11 @@ var express = require('express'),
 	path = require('path');
 
 // for Heroku purposes
-var port = Number(process.env.PORT || 3000);
+var port = Number(process.env.PORT || 3001);
 
-app.listen(port);
+app.listen(port, function(){
+	console.log('Listening on port ' + port + '...');
+});
 
 // db.on('error', console.error.bind(console, 'mongodb connection error:'));
 // db.once('open', function (callback){
@@ -29,7 +31,14 @@ app.use(express.static(bowerPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// API
 app.use('/api', require('./routes/student-data'));
+
+// Error handler
+app.use(function(err, req, res, next) {
+	console.log('ERROR: ', error);
+	res.status(500).send('There was an error with your request!');
+});
 
 
 

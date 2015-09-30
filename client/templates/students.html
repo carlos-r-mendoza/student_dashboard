@@ -1,0 +1,24 @@
+<div gridster="gridsterOpts">
+    <ul>
+        <li gridster-item row="0" col="0" size-x="6" size-y="3" style="background: red; overflow: hidden">
+			<table class="bordered centered highlight responsive-table" style="height: 100%;">
+				<thead>
+				  <tr>
+					<th ng-repeat="header in tableHeaders">{{ header }}</th>
+				  </tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="student in students">
+						<td>{{ student.studentId }}</td>
+						<td>{{ student.studentName }}</td>
+						<td>{{ student.grade }}</td>
+						<td>{{ student.gender }}</td>
+						<td>{{ student.percentDaysLateSy1415 }}</td>
+						<td>{{ student.attendanceSy1415 }}</td>
+					</tr>
+				</tbody>
+			</table>
+
+        </li>
+    </ul>
+</div>

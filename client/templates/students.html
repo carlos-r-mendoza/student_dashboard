@@ -1,9 +1,10 @@
 <div search></div>
-<div class="row">
+<div class="row custom-range">
 	<form action="#" class="col s12">
 		<div class="row">
-			<p class="range-field col s12">
-			  <input type="range" id="test5" min="0" max="105" class="active" ng-model="range"/>
+			<p class="col s3 center-align"><strong>Adjust slider to filter by attendance %</strong></p>
+			<p class="range-field col s9">
+			  <input type="range" id="test5" min="0" max="105" value="105" class="active" ng-model="range"/>
 			  <span class="thumb">
 			  	<span class="value"></span>
 			  </span>
@@ -16,7 +17,7 @@
     <ul>
         <li widget header="Students" gridster-item row="0" col="0" size-x="4" size-y="3">
 			<table widget-table>
-				<thead style="positionL">
+				<thead>
 				  <tr>
 					<th ng-repeat="header in studentsTableHeaders">{{ header }}
 						<i class="material-icons cursor-pointer" ng-click="sortData($index)">swap_vert</i>
@@ -24,7 +25,7 @@
 				  </tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="student in students | orderBy:predicate:reverse | filter:search" ng-click="showStudentDetails(student.index)" class="cursor-pointer">
+					<tr ng-repeat="student in students | orderBy:predicate:reverse | filter:search | attendance:range" ng-click="showStudentDetails(student.index)" class="cursor-pointer">
 						<td>{{ student.studentId }}</td>
 						<td>{{ student.studentName }}</td>
 						<td>{{ student.grade }}</td>

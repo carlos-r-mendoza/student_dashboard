@@ -27,6 +27,8 @@ angular.module('studentDashboard')
 			'Travel Time'
 		];
 
+		$scope.range = 105;
+
 		$scope.sortData = function(indx) {
 			$scope.predicate = Students.mapKey(indx);
 			$scope.reverse = !$scope.reverse;

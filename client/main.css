@@ -2,6 +2,10 @@
 	background-color: #fafafa;
 	color: #2A2A2A;
 }
+.custom-range {
+	margin-bottom: -30px; 
+	margin-top: -100px !important;
+}
 
 @media (min-width: 992px) {
 	.margin-left-50 {

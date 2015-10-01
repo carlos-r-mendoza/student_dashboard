@@ -5,7 +5,7 @@
 
 	<div gridster="gridsterOpts">
 	    <ul>
-	        <li widget header="Students" gridster-item row="0" col="0" size-x="4" size-y="3">
+	        <li widget header="Students" gridster-item row="0" col="0" size-x="4" size-y="3" style="overflow: hidden;">
 				<table widget-table>
 					<thead>
 					  <tr>
@@ -26,7 +26,7 @@
 					</tbody>
 				</table>
 	        </li>
-	        <li widget header="{{ studentDetails.studentName }}" gridster-item row="0" col="4" size-x="2" size-y="3">
+	        <li widget header="{{ studentDetails.studentName }}" gridster-item row="0" col="4" size-x="2" size-y="3" style="overflow: hidden;">
 				<table widget-table>
 					<tbody>
 						<tr ng-repeat="column in studentTableColumns">

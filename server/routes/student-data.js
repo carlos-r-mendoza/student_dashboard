@@ -37,6 +37,8 @@ var studentDataModel = function(student) {
 var parseStudentsData = function(data) {
 	var parsedStudentsData = [];
 	var students = JSON.parse(data);
+	//removes first array item with property mapping names
+	students.shift();
 
 	students.forEach(function(student) {
 		parsedStudentsData.push(new studentDataModel(student));
@@ -72,7 +74,7 @@ router.get('/student-data', function(req, res, next) {
 	// request.get(url, function(err, response, body) {
 	// 		if(err) { throw err; }
 	// 		statusCode(response.statusCode);
-	// 		writeDataFile(body);
+	// 		// writeDataFile(body);
 	// 		res.send(parseStudentsData(body));
 	// });
 });

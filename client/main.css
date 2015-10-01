@@ -1,3 +1,12 @@
+.custom-body {
+	background-color: #fafafa;
+	color: #2A2A2A;
+}
+.custom-range {
+	margin-bottom: -30px; 
+	margin-top: -100px !important;
+}
+
 @media (min-width: 992px) {
 	.margin-left-50 {
 		margin-left: 50px;
@@ -13,16 +22,49 @@
 	width: 50%;
 	margin-left: 25%;
 }
+.custom-search {
+	margin-bottom: -30px; 
+	margin-top: 10px;
+}
+
+/* label color */
+.input-field label {
+ color: red !important;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+ color: #37474f;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid #37474f;
+ box-shadow: 0 1px 0 0 #37474f;
+}
+/* valid color */
+.input-field input[type=text].valid {
+ border-bottom: 1px solid #37474f;
+ box-shadow: 0 1px 0 0 #37474f;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+ border-bottom: 1px solid #37474f;
+ box-shadow: 0 1px 0 0 #37474f;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+ color: #37474f;
+}
 
 .custom-widget {
 	overflow: scroll;
-	border: 1px solid #fb8c00;
+	border: 1px solid #616161;
 	padding-top: 44px;
 	background-color: #fff;
 }
 
 .widget-header {
-    background-color: #eee;
+    background-color: #b0bec5;
+    color: #2A2A2A;
 	border-bottom: 1px solid #ccc;
     cursor: move;
     position: absolute;
@@ -43,6 +85,10 @@
 .widget-body {
 	height: 100%;
     overflow: scroll;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 /*.widget-header-btns {
     top: 15px;

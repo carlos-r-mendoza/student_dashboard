@@ -9,7 +9,7 @@ var express = require('express'),
 	path = require('path');
 
 // for Heroku purposes
-var port = Number(process.env.PORT || 3001);
+var port = Number(process.env.PORT || 3002);
 
 app.listen(port, function(){
 	console.log('Listening on port ' + port + '...');

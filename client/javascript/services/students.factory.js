@@ -62,7 +62,6 @@ angular.module('studentDashboard')
 					studentsOverview.push(new studentOverviewModel(student));
 					counter++;
 				});
-				console.log(studentsOverview)
 
 				return studentsOverview;
 			});

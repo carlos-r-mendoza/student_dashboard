@@ -29,6 +29,10 @@ angular.module('studentDashboard')
 
 		$scope.range = 105;
 
+		$scope.setAsSelected = function(indx) {
+			$scope.selected = indx;
+		}
+
 		$scope.sortData = function(indx) {
 			$scope.predicate = Students.mapKey(indx);
 			$scope.reverse = !$scope.reverse;
@@ -47,7 +51,6 @@ angular.module('studentDashboard')
 		var getStudentDetails = function(indx) {
 			$q.when(Students.getStudentDetails(indx))
 				.then(function(data) {
-					console.log(data)
 					$scope.studentDetails = data;
 				});
 		};

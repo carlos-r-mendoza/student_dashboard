@@ -8,7 +8,7 @@ angular.module('studentDashboard')
     // There is <base href='/'> tag in index.html that is required for this to work
     $locationProvider.html5Mode(true);
     // If we go to a URL that ui-router doesn't have registered, go to the "/" url.
-    $urlRouterProvider.otherwise('main');
+    $urlRouterProvider.otherwise('students');
 });
 
 //config of $stateProvider
@@ -16,11 +16,11 @@ angular.module('studentDashboard')
 	.config(function ($stateProvider) {
 
 	$stateProvider
-		.state('main', {
-			url: '/',
-			templateUrl: 'templates/students.html',
-			controller: 'StudentsCtrl'
-		})
+		// .state('main', {
+		// 	url: '/',
+		// 	templateUrl: 'templates/students.html',
+		// 	controller: 'StudentsCtrl'
+		// })
 		.state('students', {
 			url: '/students',
 			templateUrl: 'templates/students.html',

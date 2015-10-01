@@ -1,63 +1,54 @@
-<div search></div>
-<div class="row custom-range">
-	<form action="#" class="col s12">
-		<div class="row">
-			<p class="col s3 center-align"><strong>Adjust slider to filter by attendance %</strong></p>
-			<p class="range-field col s9">
-			  <input type="range" id="test5" min="0" max="105" value="105" class="active" ng-model="range"/>
-			  <span class="thumb">
-			  	<span class="value"></span>
-			  </span>
-			</p>
-		</div>
-	</form>
-</div>
+<div preloader ng-if="!students">></div>
+<div ng-show="students">
+	<div search></div>
+	<div slider></div>
 
-<div gridster="gridsterOpts">
-    <ul>
-        <li widget header="Students" gridster-item row="0" col="0" size-x="4" size-y="3">
-			<table widget-table>
-				<thead>
-				  <tr>
-					<th ng-repeat="header in studentsTableHeaders">{{ header }}
-						<i class="material-icons cursor-pointer" ng-click="sortData($index)">swap_vert</i>
-					</th>
-				  </tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="student in students | orderBy:predicate:reverse | filter:search | attendance:range" ng-click="showStudentDetails(student.index)" class="cursor-pointer">
-						<td>{{ student.studentId }}</td>
-						<td>{{ student.studentName }}</td>
-						<td>{{ student.grade }}</td>
-						<td>{{ student.gender }}</td>
-						<td>{{ student.percentDaysLateSy1415 | percentage }}%</td>
-						<td>{{ student.attendanceYtd | percentage }}%</td>
-					</tr>
-				</tbody>
-			</table>
-        </li>
-        <li widget header="{{ studentDetails.studentName }}" gridster-item row="0" col="4" size-x="2" size-y="3">
-			<table widget-table>
-				<tbody>
-					<tr ng-repeat="column in studentTableColumns">
-						<th>{{column}}</th>
-						<td ng-if="$index === 0">{{ studentDetails.cohort }}</td>
-						<td ng-if="$index === 1">{{ studentDetails.officialClass }}</td>
-						<td ng-if="$index === 2">{{ studentDetails.ethnicity }}</td>
-						<td ng-if="$index === 3">{{ studentDetails.freeOrReducedLunch }}</td>
-						<td ng-if="$index === 4">{{ studentDetails.attendance8thGrade | percentage }}%</td>
-						<td ng-if="$index === 5">{{ studentDetails.attendanceSy1213 | percentage }}%</td>
-						<td ng-if="$index === 6">{{ studentDetails.attendanceSy1314 | percentage }}%</td>
-						<td ng-if="$index === 7">{{ studentDetails.attendanceSy1415 | percentage }}%</td>
-						<td ng-if="$index === 8">{{ studentDetails.attendanceYtd | percentage }}%</td>
-						<td ng-if="$index === 9">{{ studentDetails.transcriptGradeAverage }}</td>
-						<td ng-if="$index === 10">{{ studentDetails.transitDistanceMiles }} mi</td>
-						<td ng-if="$index === 11">{{ studentDetails.transitTimeMinutes }} min</td>
+	<div gridster="gridsterOpts">
+	    <ul>
+	        <li widget header="Students" gridster-item row="0" col="0" size-x="4" size-y="3">
+				<table widget-table>
+					<thead>
+					  <tr>
+						<th ng-repeat="header in studentsTableHeaders">{{ header }}
+							<i class="material-icons cursor-pointer" ng-click="sortData($index)">swap_vert</i>
+						</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="student in students | orderBy:predicate:reverse | filter:search | attendance:range" ng-click="showStudentDetails(student.index); setAsSelected($index)" ng-class="{active: selected === $index}" class="cursor-pointer">
+							<td>{{ student.studentId }}</td>
+							<td>{{ student.studentName }}</td>
+							<td>{{ student.grade }}</td>
+							<td>{{ student.gender }}</td>
+							<td>{{ student.percentDaysLateSy1415 | percentage }}%</td>
+							<td>{{ student.attendanceYtd | percentage }}%</td>
+						</tr>
+					</tbody>
+				</table>
+	        </li>
+	        <li widget header="{{ studentDetails.studentName }}" gridster-item row="0" col="4" size-x="2" size-y="3">
+				<table widget-table>
+					<tbody>
+						<tr ng-repeat="column in studentTableColumns">
+							<th class="padding-left-20">{{column}}</th>
+							<td ng-if="$index === 0">{{ studentDetails.cohort }}</td>
+							<td ng-if="$index === 1">{{ studentDetails.officialClass }}</td>
+							<td ng-if="$index === 2">{{ studentDetails.ethnicity }}</td>
+							<td ng-if="$index === 3">{{ studentDetails.freeOrReducedLunch }}</td>
+							<td ng-if="$index === 4">{{ studentDetails.attendance8thGrade | percentage }}%</td>
+							<td ng-if="$index === 5">{{ studentDetails.attendanceSy1213 | percentage }}%</td>
+							<td ng-if="$index === 6">{{ studentDetails.attendanceSy1314 | percentage }}%</td>
+							<td ng-if="$index === 7">{{ studentDetails.attendanceSy1415 | percentage }}%</td>
+							<td ng-if="$index === 8">{{ studentDetails.attendanceYtd | percentage }}%</td>
+							<td ng-if="$index === 9">{{ studentDetails.transcriptGradeAverage }}</td>
+							<td ng-if="$index === 10">{{ studentDetails.transitDistanceMiles }} mi</td>
+							<td ng-if="$index === 11">{{ studentDetails.transitTimeMinutes }} min</td>
 
-					</tr>
-				</tbody>
-			</table>
+						</tr>
+					</tbody>
+				</table>
 
-        </li>
-    </ul>
+	        </li>
+	    </ul>
+	</div>
 </div>

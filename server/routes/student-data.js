@@ -66,15 +66,16 @@ var readDataFile = function() {
 // route getting student data
 router.get('/student-data', function(req, res, next) {
 
-	var data = readDataFile();
-	res.send(parseStudentsData(data));
+	// wrote data to json file for dev purposes
+	// var data = readDataFile();
+	// res.send(parseStudentsData(data));
 
-	// var url = 'https://script.googleusercontent.com/macros/echo?user_content_key=n0-xTMUN3nHuCO_jnoCuwdjRY1mchfoMK16VB3c2PTfxiebdcgR1hjQEnbV0M5kK-EQUMwFP_TG06WnhaRnAfS8cGy0Ss8Vxm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnFL1bTUvgtX-I3dP-rkaVkXwq9c0lP_yAdwLqrO1fBG9ViVZIXLuuM38ZxVVktS6pGwihnkohuAm&lib=Mw-ve0R7zJP9N1rf46jTbuILi7CGwAUIU';
+	var url = 'https://script.googleusercontent.com/macros/echo?user_content_key=n0-xTMUN3nHuCO_jnoCuwdjRY1mchfoMK16VB3c2PTfxiebdcgR1hjQEnbV0M5kK-EQUMwFP_TG06WnhaRnAfS8cGy0Ss8Vxm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnFL1bTUvgtX-I3dP-rkaVkXwq9c0lP_yAdwLqrO1fBG9ViVZIXLuuM38ZxVVktS6pGwihnkohuAm&lib=Mw-ve0R7zJP9N1rf46jTbuILi7CGwAUIU';
 
-	// request.get(url, function(err, response, body) {
-	// 		if(err) { throw err; }
-	// 		statusCode(response.statusCode);
-	// 		// writeDataFile(body);
-	// 		res.send(parseStudentsData(body));
-	// });
+	request.get(url, function(err, response, body) {
+			if(err) { throw err; }
+			statusCode(response.statusCode);
+			// writeDataFile(body);
+			res.send(parseStudentsData(body));
+	});
 });

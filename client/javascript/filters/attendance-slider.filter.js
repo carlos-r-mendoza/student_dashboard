@@ -4,14 +4,15 @@ angular.module('studentDashboard')
 
 			var filteredItems = [];
 
-			input.forEach(function(student) {
-				if(student["attendanceYtd"]) {
-					if(percentageFilter(student["attendanceYtd"]) <= range) {
-						filteredItems.push(student);
-					} 
-				}
-			});
-			console.log('filteredItems', filteredItems)
+			if(input) {
+				input.forEach(function(student) {
+					if(student["attendanceYtd"]) {
+						if(percentageFilter(student["attendanceYtd"]) <= range) {
+							filteredItems.push(student);
+						} 
+					}
+				});
+			}
 			return filteredItems;
 			
 		};

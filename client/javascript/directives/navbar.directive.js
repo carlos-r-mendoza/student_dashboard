@@ -7,6 +7,7 @@ angular.module('studentDashboard')
 			templateUrl: 'templates/navbar.html',
 			link: function(scope, element, attrs) {
 				$('.button-collapse').sideNav();
+				scope.tab = 'Students';
 			}
 		}
 	});

@@ -9,16 +9,11 @@ var express = require('express'),
 	path = require('path');
 
 // for Heroku purposes
-var port = Number(process.env.PORT || 3002);
+var port = Number(process.env.PORT || 3003);
 
 app.listen(port, function(){
 	console.log('Listening on port ' + port + '...');
 });
-
-// db.on('error', console.error.bind(console, 'mongodb connection error:'));
-// db.once('open', function (callback){
-// 	console.log('mongodb connected!');
-// });
 
 var clientPath = path.join(__dirname, '../client');
 var bowerPath = path.join(__dirname, '../bower_components');

@@ -1,9 +1,10 @@
 'use strict';
 
-var router = require('express').Router();
-var request = require('request');
-module.exports = router;	
+var router = require('express').Router(),
+	request = require('request'),
+	fs = require('fs');
 
+module.exports = router;	
 
 // student model constructor function
 	// this is the data of each student being sent to the client-side 
@@ -34,7 +35,6 @@ var studentDataModel = function(student) {
 
 // function that parses student data so that only necessary data is passed to client-side
 var parseStudentsData = function(data) {
-
 	var parsedStudentsData = [];
 	var students = JSON.parse(data);
 
@@ -50,14 +50,29 @@ var statusCode = function(statusCode) {
 	console.log('Response status code: ', statusCode);
 };
 
+var writeDataFile = function(data) {
+	fs.writeFile('./server/data/students-data.json', data, {encoding: 'utf8'}, function(err) {
+    	if (err) throw err;
+    	console.log('Student data written to server/data/students-data.json');
+    });
+};
+
+var readDataFile = function() {
+	return fs.readFileSync('./server/data/students-data.json', {encoding: 'utf8'});
+};
+
 // route getting student data
 router.get('/student-data', function(req, res, next) {
 
-	var url = 'https://script.googleusercontent.com/macros/echo?user_content_key=n0-xTMUN3nHuCO_jnoCuwdjRY1mchfoMK16VB3c2PTfxiebdcgR1hjQEnbV0M5kK-EQUMwFP_TG06WnhaRnAfS8cGy0Ss8Vxm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnFL1bTUvgtX-I3dP-rkaVkXwq9c0lP_yAdwLqrO1fBG9ViVZIXLuuM38ZxVVktS6pGwihnkohuAm&lib=Mw-ve0R7zJP9N1rf46jTbuILi7CGwAUIU';
+	var data = readDataFile();
+	res.send(parseStudentsData(data));
 
-	request.get(url, function(error, response, body) {
-			if(error) { return next(error); }
-			statusCode(response.statusCode);
-			res.send(parseStudentsData(body));
-	});
+	// var url = 'https://script.googleusercontent.com/macros/echo?user_content_key=n0-xTMUN3nHuCO_jnoCuwdjRY1mchfoMK16VB3c2PTfxiebdcgR1hjQEnbV0M5kK-EQUMwFP_TG06WnhaRnAfS8cGy0Ss8Vxm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnFL1bTUvgtX-I3dP-rkaVkXwq9c0lP_yAdwLqrO1fBG9ViVZIXLuuM38ZxVVktS6pGwihnkohuAm&lib=Mw-ve0R7zJP9N1rf46jTbuILi7CGwAUIU';
+
+	// request.get(url, function(err, response, body) {
+	// 		if(err) { throw err; }
+	// 		statusCode(response.statusCode);
+	// 		writeDataFile(body);
+	// 		res.send(parseStudentsData(body));
+	// });
 });

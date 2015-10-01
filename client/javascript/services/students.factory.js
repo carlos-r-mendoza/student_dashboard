@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('studentDashboard')
-	.factory('Students', function($http,$q) {
+	.factory('Students', function($http, $q) {
 
 		var cachedData = "";
 

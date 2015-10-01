@@ -29,6 +29,10 @@
 	height: 100%;
     overflow: scroll;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
 /*.widget-header-btns {
     top: 15px;
     right: 10px;

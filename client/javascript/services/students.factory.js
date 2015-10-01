@@ -20,6 +20,8 @@ angular.module('studentDashboard')
 			}
 		};
 
+		var counter = 0;
+
 		var studentOverviewModel = function(student) {
 			this.studentId = student.studentId;
 			this.studentName = student.studentName;
@@ -27,6 +29,7 @@ angular.module('studentDashboard')
 			this.gender = student.gender;
 			this.percentDaysLateSy1415 = student.percentDaysLateSy1415;
 			this.attendanceYtd = student.attendanceYtd;
+			this.index = counter;
 		};
 
 		var studentDetailsModel = function(student) {
@@ -57,6 +60,7 @@ angular.module('studentDashboard')
 			return $q.when(getData()).then(function(students) {
 				students.forEach(function(student) {
 					studentsOverview.push(new studentOverviewModel(student));
+					counter++;
 				});
 				console.log(studentsOverview)
 
@@ -68,10 +72,16 @@ angular.module('studentDashboard')
 			return new studentDetailsModel(cachedData[indx]);
 		};
 
+		var mapKey = function(indx) {
+			var keys = new studentOverviewModel(cachedData[0]);
+			return Object.keys(keys)[indx];
+		}
+
 		return {
 			getData: getData,
 			getOverview: getOverview,
-			getStudentDetails: getStudentDetails
+			getStudentDetails: getStudentDetails,
+			mapKey: mapKey
 		};
 
 	});

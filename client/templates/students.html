@@ -1,50 +1,46 @@
 <div gridster="gridsterOpts">
     <ul>
-        <li widget gridster-item row="0" col="0" size-x="6" size-y="3">
-	        	
-	        	<div class="widget-header z-index-1">
-	        		<h1 class="widget-header-title">Students</h1>
-	        	</div>
-		     
-	        	<div class="widget-body">
-					<table class="bordered centered highlight responsive-table">
-						<thead>
-						  <tr>
-							<th ng-repeat="header in tableHeaders">{{ header }}</th>
-						  </tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="student in students">
-								<td>{{ student.studentId }}</td>
-								<td>{{ student.studentName }}</td>
-								<td>{{ student.grade }}</td>
-								<td>{{ student.gender }}</td>
-								<td>{{ student.percentDaysLateSy1415 }}</td>
-								<td>{{ student.attendanceSy1415 }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-        </li>
-<!--         <li gridster-item row="0" col="4" size-x="2" size-y="3" style="background: red; overflow: hidden">
-			<table class="bordered centered highlight responsive-table" style="height: 100%;">
-				<thead>
+        <li widget header="Students" gridster-item row="0" col="0" size-x="4" size-y="3">
+			<table widget-table>
+				<thead style="positionL">
 				  <tr>
-					<th ng-repeat="header in tableHeaders">{{ header }}</th>
+					<th ng-repeat="header in studentsTableHeaders">{{ header }}</th>
 				  </tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="student in students">
+					<tr ng-repeat="student in students" ng-click="showStudentDetails($index)">
 						<td>{{ student.studentId }}</td>
 						<td>{{ student.studentName }}</td>
 						<td>{{ student.grade }}</td>
 						<td>{{ student.gender }}</td>
-						<td>{{ student.percentDaysLateSy1415 }}</td>
-						<td>{{ student.attendanceSy1415 }}</td>
+						<td>{{ student.percentDaysLateSy1415 | percentage }}%</td>
+						<td>{{ student.attendanceYtd | percentage }}%</td>
+					</tr>
+				</tbody>
+			</table>
+        </li>
+        <li widget header="{{ studentDetails.studentName }}" gridster-item row="0" col="4" size-x="2" size-y="3">
+			<table widget-table>
+				<tbody>
+					<tr ng-repeat="column in studentTableColumns">
+						<th>{{column}}</th>
+						<td ng-if="$index === 0">{{ studentDetails.cohort }}</td>
+						<td ng-if="$index === 1">{{ studentDetails.officialClass }}</td>
+						<td ng-if="$index === 2">{{ studentDetails.ethnicity }}</td>
+						<td ng-if="$index === 3">{{ studentDetails.freeOrReducedLunch }}</td>
+						<td ng-if="$index === 4">{{ studentDetails.attendance8thGrade | percentage }}%</td>
+						<td ng-if="$index === 5">{{ studentDetails.attendanceSy1213 | percentage }}%</td>
+						<td ng-if="$index === 6">{{ studentDetails.attendanceSy1314 | percentage }}%</td>
+						<td ng-if="$index === 7">{{ studentDetails.attendanceSy1415 | percentage }}%</td>
+						<td ng-if="$index === 8">{{ studentDetails.attendanceYtd | percentage }}%</td>
+						<td ng-if="$index === 9">{{ studentDetails.transcriptGradeAverage }}</td>
+						<td ng-if="$index === 10">{{ studentDetails.transitDistanceMiles }}</td>
+						<td ng-if="$index === 11">{{ studentDetails.transitTimeMinutes }}</td>
+
 					</tr>
 				</tbody>
 			</table>
 
-        </li> -->
+        </li>
     </ul>
 </div>

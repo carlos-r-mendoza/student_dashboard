@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('studentDashboard')
-	.controller('StudentsCtrl', function($scope, Students) {
+	.controller('StudentsCtrl', function($scope, $q, Students) {
 
-		$scope.tableHeaders = [
+		$scope.studentsTableHeaders = [
 			'Student ID',
 			'Name',
 			'Grade',
@@ -12,10 +12,38 @@ angular.module('studentDashboard')
 			'Attendance %'
 		];
 
+		$scope.studentTableColumns = [
+			'Cohort',
+			'Class',
+			'Ethnicity',
+			'Free or Reduced Lunch',
+			'8th Grade Attendance',
+			'SY 12-13 Attendance',
+			'SY 13-14 Attendance',
+			'SY 14-15 Attendance',
+			'YTD Attendance',
+			'GPA',
+			'Transit Distance',
+			'Travel Time'
+		];
+
 		Students.getOverview()
 			.then(function(data) {
 			$scope.students = data;
+			getStudentDetails(0);
 		});
+
+		$scope.showStudentDetails = function(indx) {
+			getStudentDetails(indx);
+		};
+
+		var getStudentDetails = function(indx) {
+			$q.when(Students.getStudentDetails(indx))
+				.then(function(data) {
+					console.log(data)
+					$scope.studentDetails = data;
+				});
+		};
 
 	$scope.gridsterOpts = {
 	    columns: 6, // the width of the grid, in columns
@@ -25,7 +53,7 @@ angular.module('studentDashboard')
 	    width: 'auto', // can be an integer or 'auto'. 'auto' scales gridster to be the full width of its containing element
 	    colWidth: 'auto', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
 	    rowHeight: 'match', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
-	    margins: [10, 10], // the pixel distance between each widget
+	    margins: [20, 20], // the pixel distance between each widget
 	    outerMargin: true, // whether margins apply to outer edges of the grid
 	    isMobile: false, // stacks the grid items if true
 	    mobileBreakPoint: 600, // if the screen is not wider that this, remove the grid layout and stack the items

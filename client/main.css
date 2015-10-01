@@ -1,3 +1,7 @@
+.custom-body {
+	background-color: #fafafa;
+	color: #2A2A2A;
+}
 @media (min-width: 992px) {
 	.margin-left-50 {
 		margin-left: 50px;
@@ -16,13 +20,14 @@
 
 .custom-widget {
 	overflow: scroll;
-	border: 1px solid #fb8c00;
+	border: 1px solid #616161;
 	padding-top: 44px;
 	background-color: #fff;
 }
 
 .widget-header {
-    background-color: #eee;
+    background-color: #b0bec5;
+    color: #2A2A2A;
 	border-bottom: 1px solid #ccc;
     cursor: move;
     position: absolute;
